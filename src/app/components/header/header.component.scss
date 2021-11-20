@@ -1,0 +1,37 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px;
+
+  border-bottom: 2px solid #313131;
+
+  &__title {
+    color: #313131;
+    font-weight: 700;
+
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+
+    padding: 2px 4px;
+
+    color: #313131;
+
+    background-color: transparent;
+    border: 1px solid #313131;
+  }
+
+  &__button:active {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .button-text {
+    margin-left: 10px;
+  }
+}

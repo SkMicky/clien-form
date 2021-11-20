@@ -1,0 +1,52 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #313131;
+
+  border-radius: 5px;
+
+  &__info {
+    display: flex;
+    align-items: center;
+
+    &-image {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      & > p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        color: #D6DBDF;
+      }
+    }
+
+    &-description {
+      margin-left: 10px;
+
+      &--subtitle {
+        font-size: 0.8rem;
+        color: gray;
+      }
+
+      .vip-client {
+        color: firebrick;
+      }
+
+      .new-client {
+        color: yellowgreen;
+      }
+
+      .regular-client {
+        color: dodgerblue;
+      }
+    }
+  }
+}

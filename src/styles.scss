@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 * {
   box-sizing: border-box !important;
-  margin: 0 !important;
-  padding: 0;
 
   &:before,
   &:after {
@@ -15,6 +13,21 @@ button {
   cursor: pointer;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 HTML,
 BODY {
   width: 100%;
@@ -25,7 +38,7 @@ BODY {
 BODY {
   background-color: white;
   font-family: "Roboto", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   color: #313131;
   -webkit-font-smoothing: antialiased;
 }
