@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {UtilsService} from '../../services/utils.service';
 
 @Component({
   selector: 'app-client-address',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientAddressComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+
+  constructor(private _router: Router, private _fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this._fb.group({
+
+    });
+  }
+
+  goNext(): void {
+    this._router.navigate(['identity']);
   }
 
 }

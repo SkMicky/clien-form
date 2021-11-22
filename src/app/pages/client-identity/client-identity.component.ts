@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-client-identity',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientIdentityComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+
+  constructor(private _router: Router, private _fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this._fb.group({
+
+    });
+  }
+
+  goToClient(): void {
+    this._router.navigate(['client-created']);
   }
 
 }

@@ -13,19 +13,13 @@ button {
   cursor: pointer;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 !important;
-  padding: 0 !important;
+ul, p {
+  margin: 0;
+  padding: 0;
 }
 
-p {
-  margin: 0 !important;
-  padding: 0 !important;
+li {
+  list-style-type: none;
 }
 
 HTML,
@@ -41,4 +35,34 @@ BODY {
   font-size: 16px;
   color: #313131;
   -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  background: url("assets/images/bg.png") repeat;
+}
+
+app-client-info,
+app-client-address,
+app-client-identity
+{
+  width: 50%;
+}
+
+.form-card {
+  width: 100%;
+}
+
+.active {
+  color: white;
+
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
+  border: 1px solid #66add6;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 30%), inset 0 1px 0 rgb(255 255 255 / 50%);
 }

@@ -1,21 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
 import {MatIconModule} from '@angular/material/icon';
-import { LayoutComponent } from './layout/layout.component';
 import { ClientComponent } from './client/client.component';
 import {MatCardModule} from '@angular/material/card';
 import {RouterModule} from '@angular/router';
+import { StepperComponent } from './stepper/stepper.component';
 
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    FooterComponent,
-    LayoutComponent,
     ClientComponent,
+    StepperComponent,
   ],
   imports: [
     CommonModule,
@@ -25,10 +21,8 @@ import {RouterModule} from '@angular/router';
     RouterModule
   ],
   exports: [
-    HeaderComponent,
-    FooterComponent,
-    LayoutComponent,
     ClientComponent,
+    StepperComponent,
   ]
 })
 export class ComponentsModule { }

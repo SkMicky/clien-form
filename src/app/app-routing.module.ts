@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ClientsComponent} from './pages/clients/clients.component';
 import {ClientInfoComponent} from './pages/client-info/client-info.component';
 import {ClientAddressComponent} from './pages/client-address/client-address.component';
 import {ClientIdentityComponent} from './pages/client-identity/client-identity.component';
 import {ClientCreatedComponent} from './pages/client-created/client-created.component';
 
 export const routes: Routes = [
-  {
-    path: 'clients', component: ClientsComponent
-  },
   {
     path: 'client-form', children: [
       {
@@ -30,7 +26,7 @@ export const routes: Routes = [
     path: 'client-created', component: ClientCreatedComponent
   },
   {
-    path: '**', redirectTo: '/clients'
+    path: '**', redirectTo: '/client-form/client'
   }
 ];
 

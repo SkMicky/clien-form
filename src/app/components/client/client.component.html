@@ -4,7 +4,7 @@
       <p>{{ client.info.lastName.slice(0, 1).toUpperCase() }}.{{ client.info.firstName.slice(0, 1).toUpperCase() }}</p>
     </div>
     <div class="wrapper__info-description">
-      <p class="wrapper__info-description--title">{{ client.info.lastName }} {{ client.info.firstName.slice(0, 1).toUpperCase() }} {{ client.info.middleName.slice(0, 1).toUpperCase() }}</p>
+      <p class="wrapper__info-description--title">{{ client.info.lastName }} {{ client.info.firstName.slice(0, 1).toUpperCase() }}.{{ client.info.middleName.slice(0, 1).toUpperCase() }}.</p>
       <p class="wrapper__info-description--subtitle">{{ client.info.birthDate | date: 'dd.MM.yyyy' }} ● {{ client.info.gender === 'male' ? 'Мужчина' : 'Женщина' }}</p>
       <p [class.vip-client]="client.info.clientGroup === 'VIP'"
          [class.new-client]="client.info.clientGroup === 'NEW'"
