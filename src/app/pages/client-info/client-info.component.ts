@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-// import {ToastrService} from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-client-info',
@@ -12,7 +12,7 @@ export class ClientInfoComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private _fb: FormBuilder, private _router: Router) { }
+  constructor(private _fb: FormBuilder, private _router: Router, private _toastrService: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -36,7 +36,7 @@ export class ClientInfoComponent implements OnInit {
 
   goNext(): void {
     if (this.form.invalid) {
-      // this._toastrService.error('Необходимо заполнить форму для перехода к следующему шагу');
+      this._toastrService.error('Необходимо заполнить форму для перехода к следующему шагу');
       return;
     }
 

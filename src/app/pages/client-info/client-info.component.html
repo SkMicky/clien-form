@@ -4,59 +4,59 @@
     <form class="form-card__form" [formGroup]="form">
 
       <div class="form__layout">
-        <mat-form-field appearance="outline" class="mff-100">
-          <mat-label>Страна проживания</mat-label>
+<!--        <mat-form-field appearance="outline" class="mff-100">-->
+<!--          <mat-label>Страна проживания</mat-label>-->
 <!--          <mat-select formControlName="country" required>-->
 <!--            <mat-option [value]="null">Выберите страну</mat-option>-->
 <!--            <mat-option *ngFor="let country of countriesList" [value]="country.isoCode">-->
 <!--              {{ country.name }}-->
 <!--            </mat-option>-->
 <!--          </mat-select>-->
-          <mat-error *ngIf="form.controls.country.hasError('required')
-                      && (form.controls.country.touched || form.controls.country.dirty)">
-            Это поле обязательно для заполнения
-          </mat-error>
-        </mat-form-field>
+<!--          <mat-error *ngIf="form.controls.country.hasError('required')-->
+<!--                      && (form.controls.country.touched || form.controls.country.dirty)">-->
+<!--            Это поле обязательно для заполнения-->
+<!--          </mat-error>-->
+<!--        </mat-form-field>-->
       </div>
 
       <div class="form__layout">
-        <mat-form-field appearance="outline" class="mff-100">
-          <mat-label>Область проживания</mat-label>
-          <input type="text" matInput formControlName="region" placeholder="Введите название области" autocomplete="off">
-        </mat-form-field>
+<!--        <mat-form-field appearance="outline" class="mff-100">-->
+<!--          <mat-label>Область проживания</mat-label>-->
+<!--          <input type="text" matInput formControlName="region" placeholder="Введите название области" autocomplete="off">-->
+<!--        </mat-form-field>-->
       </div>
 
       <div class="form__layout">
-        <mat-form-field appearance="outline" class="mff-15">
-          <mat-label>Индекс</mat-label>
-          <input type="text" matInput formControlName="zipCode" autocomplete="off">
-        </mat-form-field>
+<!--        <mat-form-field appearance="outline" class="mff-15">-->
+<!--          <mat-label>Индекс</mat-label>-->
+<!--          <input type="text" matInput formControlName="zipCode" autocomplete="off">-->
+<!--        </mat-form-field>-->
 
-        <mat-form-field appearance="outline" class="mff-streamline mff-85">
-          <mat-label>Город проживания</mat-label>
+<!--        <mat-form-field appearance="outline" class="mff-streamline mff-85">-->
+<!--          <mat-label>Город проживания</mat-label>-->
 <!--          <mat-select formControlName="city" required>-->
 <!--            <mat-option [value]="null">Выберите город</mat-option>-->
 <!--            <mat-option *ngFor="let city of citiesList" [value]="city.stateCode">-->
 <!--              {{ city.name }}-->
 <!--            </mat-option>-->
 <!--          </mat-select>-->
-          <mat-error *ngIf="form.controls.city.hasError('required')
-                    && (form.controls.city.touched || form.controls.city.dirty)">
-            Это поле обязательно для заполнения
-          </mat-error>
-        </mat-form-field>
+<!--          <mat-error *ngIf="form.controls.city.hasError('required')-->
+<!--                    && (form.controls.city.touched || form.controls.city.dirty)">-->
+<!--            Это поле обязательно для заполнения-->
+<!--          </mat-error>-->
+<!--        </mat-form-field>-->
       </div>
 
       <div class="form__layout">
-        <mat-form-field appearance="outline" class="mff-85">
-          <mat-label>Улица</mat-label>
-          <input type="text" matInput formControlName="street" placeholder="Введите название улицы" autocomplete="off">
-        </mat-form-field>
+<!--        <mat-form-field appearance="outline" class="mff-85">-->
+<!--          <mat-label>Улица</mat-label>-->
+<!--          <input type="text" matInput formControlName="street" placeholder="Введите название улицы" autocomplete="off">-->
+<!--        </mat-form-field>-->
 
-        <mat-form-field appearance="outline" class="mff-15 mff-streamline">
-          <mat-label>Дом</mat-label>
-          <input type="text" matInput formControlName="building" autocomplete="off">
-        </mat-form-field>
+<!--        <mat-form-field appearance="outline" class="mff-15 mff-streamline">-->
+<!--          <mat-label>Дом</mat-label>-->
+<!--          <input type="text" matInput formControlName="building" autocomplete="off">-->
+<!--        </mat-form-field>-->
       </div>
     </form>
   </mat-card-content>

@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { Country, City } from 'country-state-city';
 import {ICity, ICountry} from 'country-state-city/dist/lib/interface';
-// import {ToastrService} from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-client-address',
@@ -17,7 +17,7 @@ export class ClientAddressComponent implements OnInit {
   countriesList: ICountry[];
   citiesList: ICity[];
 
-  constructor(private _router: Router, private _fb: FormBuilder) { }
+  constructor(private _router: Router, private _fb: FormBuilder, private _toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.countriesList = Country.getAllCountries();
@@ -48,7 +48,7 @@ export class ClientAddressComponent implements OnInit {
 
   goNext(): void {
     if (this.form.invalid) {
-      // this._toastrService.error('Необходимо заполнить форму для перехода к следующему шагу');
+      this._toastrService.error('Необходимо заполнить форму для перехода к следующему шагу');
       return;
     }
 
