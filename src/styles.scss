@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+//@import '~ngx-toastr/toastr';
+
 * {
   box-sizing: border-box !important;
 
@@ -55,8 +57,76 @@ app-client-identity
   width: 50%;
 }
 
+.mat-card {
+  padding: 0 !important;
+}
+
 .form-card {
   width: 100%;
+
+  &__header {
+    padding-top: 16px;
+  }
+
+  &__subtitle {
+    display: flex !important;
+    align-items: center;
+
+    margin-bottom: 0 !important;
+
+    cursor: pointer;
+  }
+
+  &__body {
+    padding: 10px 16px 0 20px;
+  }
+
+  &__form {
+    margin: 15px auto;
+
+    width: 85%;
+  }
+}
+
+.form__layout {
+  display: flex;
+  align-items: center;
+}
+
+.mff-100 {
+  width: 100%;
+}
+
+.mff-85 {
+  width: 85%;
+}
+
+.mff-15 {
+  width: 15%;
+}
+
+.mff-streamline {
+  margin-left: 10px;
+}
+
+.form__footer  {
+  display: flex !important;
+  //justify-content: space-between;
+  align-items: center;
+
+  margin: 0 !important;
+  padding: 12px 15px;
+
+  background: #ecf2f5;
+  box-shadow: inset 0 1px 1px #fff;
+  border-top: 1px solid #ccc;
+
+  .button-next {
+    margin-left: auto;
+    padding: 8px 20px;
+
+    border-radius: 30px;
+  }
 }
 
 .active {

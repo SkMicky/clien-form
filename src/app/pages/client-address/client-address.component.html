@@ -1,55 +1,77 @@
 <mat-card class="form-card">
-  <div class="form-card__container">
-    <div class="form-card__body">
-      <h1 class="form-card__title title title--h1">
-        Адрес клиента
-      </h1>
-      <div class="form-card__content">
-        <div class="form-card__form">
-          <div class="form" [formGroup]="form">
-            <div class="form__fieldset">
-              <!--              <div class="form__layout form__input">-->
-              <!--                <mat-form-field>-->
-              <!--                  <mat-placeholder>Номер телефона</mat-placeholder>-->
-              <!--                  <input matInput class="mat-input" type="tel" prefix="+7" mask="(000) 000 00 00" formControlName="phone" autocomplete="off">-->
-              <!--                </mat-form-field>-->
-              <!--              </div>-->
-              <!--              <div class="form__validation form__validation&#45;&#45;error"-->
-              <!--                   *ngIf="form.controls.phone.errors?.required && form.controls.phone.touched">-->
-              <!--                Это поле обязательно для заполнения-->
-              <!--              </div>-->
-            </div>
-            <div class="form__fieldset">
-              <div class="form__layout form__input">
-                <!--                <mat-form-field>-->
-                <!--                  <mat-placeholder>E-mail</mat-placeholder>-->
-                <!--                  <input matInput class="mat-input" type="email" formControlName="email" autocomplete="off">-->
-                <!--                </mat-form-field>-->
-              </div>
-              <!--              <div class="form__validation form__validation&#45;&#45;error"-->
-              <!--                   *ngIf="form.controls.email.errors?.required && form.controls.email.touched">-->
-              <!--                Это поле обязательно для заполнения-->
-              <!--              </div>-->
-              <!--              <div class="form__validation form__validation&#45;&#45;error"-->
-              <!--                   *ngIf="form.controls.email.errors?.email && form.controls.email.touched">-->
-              <!--                Введите корректный e-mail-->
-              <!--              </div>-->
-            </div>
+  <mat-card-header class="form-card__header">
+    <mat-card-subtitle class="form-card__subtitle" (click)="goPrevious()">
+      <mat-icon>arrow_left_alt</mat-icon>
+      <span>Назад</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="form-card__body">
+    <h3>Адрес клиента</h3>
+    <form class="form-card__form" [formGroup]="form">
 
-            <!--            <div class="form__fieldset">-->
-            <!--              <span class="mat-error">Внимание! Данный Email уже используется на Портале eTorgi</span>-->
-            <!--            </div>-->
-          </div>
-        </div>
+      <div class="form__layout">
+        <mat-form-field appearance="outline" class="mff-100">
+          <mat-label>Страна проживания</mat-label>
+          <mat-select formControlName="country" required>
+            <mat-option [value]="null">Выберите страну</mat-option>
+            <mat-option *ngFor="let country of countriesList" [value]="country.isoCode">
+              {{ country.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls.country.hasError('required')
+                      && (form.controls.country.touched || form.controls.country.dirty)">
+            Это поле обязательно для заполнения
+          </mat-error>
+        </mat-form-field>
       </div>
-    </div>
-    <div class="form__footer">
-      <button class="form__button active"
-              (click)="goNext()">
-        Далее
-      </button>
-    </div>
-  </div>
+
+      <div class="form__layout">
+        <mat-form-field appearance="outline" class="mff-100">
+          <mat-label>Область проживания</mat-label>
+          <input type="text" matInput formControlName="region" placeholder="Введите название области" autocomplete="off">
+        </mat-form-field>
+      </div>
+
+      <div class="form__layout">
+        <mat-form-field appearance="outline" class="mff-15">
+          <mat-label>Индекс</mat-label>
+          <input type="text" matInput formControlName="zipCode" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="mff-streamline mff-85">
+          <mat-label>Город проживания</mat-label>
+          <mat-select formControlName="city" required>
+            <mat-option [value]="null">Выберите город</mat-option>
+            <mat-option *ngFor="let city of citiesList" [value]="city.stateCode">
+              {{ city.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls.city.hasError('required')
+                    && (form.controls.city.touched || form.controls.city.dirty)">
+            Это поле обязательно для заполнения
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form__layout">
+        <mat-form-field appearance="outline" class="mff-85">
+          <mat-label>Улица</mat-label>
+          <input type="text" matInput formControlName="street" placeholder="Введите название улицы" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="mff-15 mff-streamline">
+          <mat-label>Дом</mat-label>
+          <input type="text" matInput formControlName="building" autocomplete="off">
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-footer class="form__footer">
+    <button type="button" class="button-next active"
+            (click)="goNext()">
+      Далее
+    </button>
+  </mat-card-footer>
 </mat-card>
 
 <app-stepper></app-stepper>

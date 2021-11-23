@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-client-identity',
@@ -15,11 +15,25 @@ export class ClientIdentityComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this._fb.group({
-
+      documentType: [null, Validators.required],
+      documentSeries: [null],
+      documentNumber: [null, Validators.required],
+      documentIssuingAuthority: [null],
+      documentIssueDate: [null, Validators.required],
+      documentFile: [null]
     });
   }
 
+  goPrevious(): void {
+    this._router.navigate(['client']);
+  }
+
   goToClient(): void {
+    if (this.form.invalid) {
+      return;
+    }
+
+    localStorage.setItem('clientIdentity', JSON.stringify(this.form.value));
     this._router.navigate(['client-created']);
   }
 
