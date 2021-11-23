@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {MatCheckboxChange} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-client-info',
@@ -18,7 +19,7 @@ export class ClientInfoComponent implements OnInit {
 
     this.form = this._fb.group({
       lastName: [null, Validators.required],
-      name: [null, Validators.required],
+      firstName: [null, Validators.required],
       middleName: [null],
       birthDate: [null, Validators.required],
       phoneNumber: [null, Validators.required],
@@ -34,6 +35,10 @@ export class ClientInfoComponent implements OnInit {
     }
   }
 
+  checkboxChange(event: MatCheckboxChange): void {
+    this.form.controls.isSendSms.setValue(event.checked);
+  }
+
   goNext(): void {
     if (this.form.invalid) {
       this._toastrService.error('Необходимо заполнить форму для перехода к следующему шагу');
@@ -41,7 +46,7 @@ export class ClientInfoComponent implements OnInit {
     }
 
     localStorage.setItem('clientInfo', JSON.stringify(this.form.value));
-    this._router.navigate(['address']);
+    this._router.navigateByUrl('/client-form/address');
   }
 
 }

@@ -1,0 +1,23 @@
+.form-space__layout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio-group {
+  padding-left: 30px;
+
+  width: 50%;
+  margin-bottom: 20px;
+
+  &__label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__radio {
+
+    & > mat-radio-button:last-child {
+      margin-left: 20px;
+    }
+  }
+}

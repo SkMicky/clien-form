@@ -4,66 +4,112 @@
     <form class="form-card__form" [formGroup]="form">
 
       <div class="form__layout">
-<!--        <mat-form-field appearance="outline" class="mff-100">-->
-<!--          <mat-label>Страна проживания</mat-label>-->
-<!--          <mat-select formControlName="country" required>-->
-<!--            <mat-option [value]="null">Выберите страну</mat-option>-->
-<!--            <mat-option *ngFor="let country of countriesList" [value]="country.isoCode">-->
-<!--              {{ country.name }}-->
-<!--            </mat-option>-->
-<!--          </mat-select>-->
-<!--          <mat-error *ngIf="form.controls.country.hasError('required')-->
-<!--                      && (form.controls.country.touched || form.controls.country.dirty)">-->
-<!--            Это поле обязательно для заполнения-->
-<!--          </mat-error>-->
-<!--        </mat-form-field>-->
+        <mat-form-field appearance="outline" class="mff-100">
+          <mat-label>Фамилия</mat-label>
+          <input type="text" matInput formControlName="lastName" placeholder="Введите фамилию" autocomplete="off" required>
+          <mat-error *ngIf="form.controls.lastName.hasError('required')
+                    && (form.controls.lastName.touched || form.controls.lastName.dirty)">
+            Это поле обязательно для заполнения
+          </mat-error>
+        </mat-form-field>
       </div>
 
       <div class="form__layout">
-<!--        <mat-form-field appearance="outline" class="mff-100">-->
-<!--          <mat-label>Область проживания</mat-label>-->
-<!--          <input type="text" matInput formControlName="region" placeholder="Введите название области" autocomplete="off">-->
-<!--        </mat-form-field>-->
+        <mat-form-field appearance="outline" class="mff-100">
+          <mat-label>Имя</mat-label>
+          <input type="text" matInput formControlName="firstName" placeholder="Введите имя" autocomplete="off" required>
+          <mat-error *ngIf="form.controls.firstName.hasError('required')
+                    && (form.controls.firstName.touched || form.controls.firstName.dirty)">
+            Это поле обязательно для заполнения
+          </mat-error>
+        </mat-form-field>
       </div>
 
       <div class="form__layout">
-<!--        <mat-form-field appearance="outline" class="mff-15">-->
-<!--          <mat-label>Индекс</mat-label>-->
-<!--          <input type="text" matInput formControlName="zipCode" autocomplete="off">-->
-<!--        </mat-form-field>-->
-
-<!--        <mat-form-field appearance="outline" class="mff-streamline mff-85">-->
-<!--          <mat-label>Город проживания</mat-label>-->
-<!--          <mat-select formControlName="city" required>-->
-<!--            <mat-option [value]="null">Выберите город</mat-option>-->
-<!--            <mat-option *ngFor="let city of citiesList" [value]="city.stateCode">-->
-<!--              {{ city.name }}-->
-<!--            </mat-option>-->
-<!--          </mat-select>-->
-<!--          <mat-error *ngIf="form.controls.city.hasError('required')-->
-<!--                    && (form.controls.city.touched || form.controls.city.dirty)">-->
-<!--            Это поле обязательно для заполнения-->
-<!--          </mat-error>-->
-<!--        </mat-form-field>-->
+        <mat-form-field appearance="outline" class="mff-100">
+          <mat-label>Отчество</mat-label>
+          <input type="text" matInput formControlName="middleName" placeholder="Введите отчество" autocomplete="off">
+        </mat-form-field>
       </div>
 
-      <div class="form__layout">
-<!--        <mat-form-field appearance="outline" class="mff-85">-->
-<!--          <mat-label>Улица</mat-label>-->
-<!--          <input type="text" matInput formControlName="street" placeholder="Введите название улицы" autocomplete="off">-->
-<!--        </mat-form-field>-->
+      <div class="form__layout form-space__layout">
+        <mat-form-field appearance="outline" class="mff-50">
+          <mat-label>Выберите дату рождения</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="birthDate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
 
-<!--        <mat-form-field appearance="outline" class="mff-15 mff-streamline">-->
-<!--          <mat-label>Дом</mat-label>-->
-<!--          <input type="text" matInput formControlName="building" autocomplete="off">-->
-<!--        </mat-form-field>-->
+          <mat-error *ngIf="form.controls.birthDate.hasError('required')
+                    && (form.controls.birthDate.touched || form.controls.birthDate.dirty)">
+            Это поле обязательно для заполнения
+          </mat-error>
+        </mat-form-field>
+
+        <div class="radio-group mff-streamline">
+          <mat-label class="radio-group__label">Выберите пол</mat-label>
+          <mat-radio-group class="radio-group__radio" formControlName="gender">
+            <mat-radio-button value="male" color="primary" >Мужской</mat-radio-button>
+            <mat-radio-button value="female" color="primary">Женский</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="form__layout form-space__layout">
+        <mat-form-field appearance="outline" class="mff-50">
+          <mat-label>Выберите группу клиентов</mat-label>
+          <mat-select formControlName="clientGroup" required>
+            <mat-option [value]="null">Выберите группу клиентов</mat-option>
+            <mat-option [value]="'VIP'">
+              VIP клиент
+            </mat-option>
+            <mat-option [value]="'REGULAR'">
+              Постоянный клиент
+            </mat-option>
+            <mat-option [value]="'NEW'">
+              Новый клиент
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls.clientGroup.hasError('required')
+                    && (form.controls.clientGroup.touched || form.controls.clientGroup.dirty)">
+            Это поле обязательно для заполнения
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="mff-50 mff-streamline">
+          <mat-label>Выберите координатора</mat-label>
+          <mat-select formControlName="coordinator" required>
+            <mat-option [value]="null">Выберите координатора</mat-option>
+            <mat-option [value]="'Ivanov'">
+              Иванов
+            </mat-option>
+            <mat-option [value]="'Zaharov'">
+              Захаров
+            </mat-option>
+            <mat-option [value]="'Chernysheva'">
+              Чернышёва
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls.coordinator.hasError('required')
+                    && (form.controls.coordinator.touched || form.controls.coordinator.dirty)">
+            Это поле обязательно для заполнения
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form__layout">
+        <mat-form-field appearance="outline" class="mff-100">
+          <mat-label>Телефон</mat-label>
+          <input type="tel" prefix="+3" matInput formControlName="phoneNumber" mask="00 00 000 00 00" required autocomplete="off">
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
       </div>
     </form>
   </mat-card-content>
   <mat-card-footer class="form__footer">
+    <mat-checkbox color="primary" [checked]="form.controls.isSendSms.value" (change)="checkboxChange($event)">
+      Не отправлять СМС
+    </mat-checkbox>
     <button type="button" class="button-next active"
-            [class.disactive]="form.invalid"
-            [disabled]="form.invalid" (click)="goNext()">
+            (click)="goNext()">
       Далее
     </button>
   </mat-card-footer>

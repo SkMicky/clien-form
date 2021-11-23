@@ -1,56 +1,96 @@
 <mat-card class="form-card">
-  <div class="form-card__container">
-    <div class="form-card__body">
-      <h1 class="form-card__title title title--h1">
-        Адрес клиента
-      </h1>
-      <div class="form-card__content">
-        <div class="form-card__form">
-          <div class="form" [formGroup]="form">
-            <div class="form__fieldset">
-              <!--              <div class="form__layout form__input">-->
-              <!--                <mat-form-field>-->
-              <!--                  <mat-placeholder>Номер телефона</mat-placeholder>-->
-              <!--                  <input matInput class="mat-input" type="tel" prefix="+7" mask="(000) 000 00 00" formControlName="phone" autocomplete="off">-->
-              <!--                </mat-form-field>-->
-              <!--              </div>-->
-              <!--              <div class="form__validation form__validation&#45;&#45;error"-->
-              <!--                   *ngIf="form.controls.phone.errors?.required && form.controls.phone.touched">-->
-              <!--                Это поле обязательно для заполнения-->
-              <!--              </div>-->
-            </div>
-            <div class="form__fieldset">
-              <div class="form__layout form__input">
-                <!--                <mat-form-field>-->
-                <!--                  <mat-placeholder>E-mail</mat-placeholder>-->
-                <!--                  <input matInput class="mat-input" type="email" formControlName="email" autocomplete="off">-->
-                <!--                </mat-form-field>-->
-              </div>
-              <!--              <div class="form__validation form__validation&#45;&#45;error"-->
-              <!--                   *ngIf="form.controls.email.errors?.required && form.controls.email.touched">-->
-              <!--                Это поле обязательно для заполнения-->
-              <!--              </div>-->
-              <!--              <div class="form__validation form__validation&#45;&#45;error"-->
-              <!--                   *ngIf="form.controls.email.errors?.email && form.controls.email.touched">-->
-              <!--                Введите корректный e-mail-->
-              <!--              </div>-->
-            </div>
+  <mat-card-header class="form-card__header">
+    <mat-card-subtitle class="form-card__subtitle" (click)="goPrevious()">
+      <mat-icon>arrow_left_alt</mat-icon>
+      <span>Назад</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="form-card__body">
+    <h3>Идентификация клиента</h3>
+    <form class="form-card__form" [formGroup]="form">
 
-            <!--            <div class="form__fieldset">-->
-            <!--              <span class="mat-error">Внимание! Данный Email уже используется на Портале eTorgi</span>-->
-            <!--            </div>-->
-          </div>
-        </div>
+      <div class="form__layout">
+        <mat-form-field appearance="outline" class="mff-100">
+          <mat-label>Тип документа</mat-label>
+          <mat-select formControlName="documentType" required>
+            <mat-option [value]="null">Выберите тип документа</mat-option>
+            <mat-option [value]="'passport'">
+              Паспорт
+            </mat-option>
+            <mat-option [value]="'birthСertificate'">
+              Свидетельство о рождении
+            </mat-option>
+            <mat-option [value]="'drivinglicense'">
+              Водительское удостоверение
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls.documentType.hasError('required')
+                      && (form.controls.documentType.touched || form.controls.documentType.dirty)">
+            Это поле обязательно для заполнения
+          </mat-error>
+        </mat-form-field>
       </div>
-    </div>
-    <div class="form__footer">
-      <button class="form__button active"
-              (click)="goToClient()">
-        Далее
-      </button>
-    </div>
-  </div>
+
+      <div class="form__layout">
+        <mat-form-field appearance="outline" class="mff-50">
+          <mat-label>Серия документа</mat-label>
+          <input type="text" matInput formControlName="documentSeries" placeholder="Введите серию документа" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="mff-50 mff-streamline">
+          <mat-label>Номер документа</mat-label>
+          <input type="text" matInput formControlName="documentNumber" placeholder="Введите номер документа" required autocomplete="off">
+
+          <mat-error *ngIf="form.controls.documentNumber.hasError('required')
+                      && (form.controls.documentNumber.touched || form.controls.documentNumber.dirty)">
+            Это поле обязательно для заполнения
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form__layout">
+        <mat-form-field appearance="outline" class="mff-50">
+          <mat-label>Кем выдан</mat-label>
+          <input type="text" matInput formControlName="documentIssuingAuthority" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="mff-50 mff-streamline">
+          <mat-label>Дата выдачи</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="documentIssueDate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+
+          <mat-error *ngIf="form.controls.documentIssueDate.hasError('required')
+                    && (form.controls.documentIssueDate.touched || form.controls.documentIssueDate.dirty)">
+            Это поле обязательно для заполнения
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form__layout mff-100">
+        <div class="file-field">
+          {{ file?.name ? file?.name : '' }}
+        </div>
+        <label matSuffix class="file-uploader">
+          <input type="file" accept=".png, .jpg, .jpeg, .pdf" (change)="uploadFile($event)" style="display: none">
+
+          <div class="file-uploader__trigger active">
+            Прикрепить
+          </div>
+        </label>
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Скан документа</mat-label>-->
+<!--          <input type="file" formControlName="documentFile">-->
+<!--        </mat-form-field>-->
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-footer class="form__footer">
+    <button type="button" class="button-next active"
+            (click)="goToClient()">
+      Далее
+    </button>
+  </mat-card-footer>
 </mat-card>
 
 <app-stepper></app-stepper>
-

@@ -1,0 +1,17 @@
+.file-uploader {
+
+  cursor: pointer;
+
+  &__trigger {
+    padding: 7.5px 16px;
+    border-radius: 0 4px 4px 0;
+  }
+}
+
+.file-field {
+  padding: 8px;
+  width: 85%;
+  height: 38px;
+  border: 1px solid rgb(224 224 224);
+  border-radius: 4px 0 0 4px;
+}

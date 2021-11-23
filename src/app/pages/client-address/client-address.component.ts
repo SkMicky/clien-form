@@ -37,7 +37,6 @@ export class ClientAddressComponent implements OnInit {
     }
 
     this.form.controls.country.valueChanges.subscribe(data => {
-      console.log(data);
       this.citiesList = City.getCitiesOfCountry(data);
     });
   }
@@ -53,7 +52,7 @@ export class ClientAddressComponent implements OnInit {
     }
 
     localStorage.setItem('clientAddress', JSON.stringify(this.form.value));
-    this._router.navigate(['identity']);
+    this._router.navigateByUrl('/client-form/identity');
   }
 
 }

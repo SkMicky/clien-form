@@ -1,12 +1,14 @@
 .wizard-wrapper {
-  margin-top: 40px;
+  margin-top: 15px;
 
   .steps {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
 
     &-route {
+      margin-bottom: 10px;
+
       width: 15%;
       height: 2px;
 

@@ -28,16 +28,17 @@ HTML,
 BODY {
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 BODY {
-  background-color: white;
+  margin: 0;
+
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   color: #313131;
   -webkit-font-smoothing: antialiased;
-  margin: 0;
+
+  background: url("assets/images/bg.png") repeat;
 }
 
 .main-wrapper {
@@ -46,8 +47,6 @@ BODY {
   align-items: center;
 
   height: 100vh;
-
-  background: url("assets/images/bg.png") repeat;
 }
 
 app-client-info,
@@ -99,6 +98,10 @@ app-client-identity
 
 .mff-85 {
   width: 85%;
+}
+
+.mff-50 {
+  width: 50%;
 }
 
 .mff-15 {
