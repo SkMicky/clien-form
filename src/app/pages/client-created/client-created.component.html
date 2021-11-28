@@ -1,32 +1,69 @@
 <mat-card class="form-card">
   <mat-card-content class="form-card__body">
-    <div class="info-box">
-      <div class="info-box__header">
-        <div class="info-box__header-image">
-          {{ client?.personal?.lastName.slice(0, 1)}}.{{ client?.personal?.firstName.slice(0, 1) }}
-        </div>
-        <div class="info-box__header-description">
-          {{ client?.personal?.gender === 'male' ? 'Мужчина' : 'Женщина' }} • {{ client?.personal?.birthDate | date: 'dd.MM.yyyy' }}
-        </div>
-        <div class="info-box__header-description"
-             [class.vip]="client?.personal?.clientGroup === 'VIP'"
-             [class.regular]="client?.personal?.clientGroup === 'REGULAR'"
-             [class.new]="client?.personal?.clientGroup === 'NEW'"
-        >
-          {{ client?.personal?.clientGroup === 'VIP' ? 'VIP Клиент' : client?.personal?.clientGroup === 'REGULAR'
-                                                     ? 'Постоянный Клиент' : 'Новый клиент' }}
+    <div class="form-card__body--aside">
+      <div class="form-card__body--aside-image">
+        {{ client?.personal?.lastName.slice(0, 1)}}.{{ client?.personal?.firstName.slice(0, 1) }}
+      </div>
+      <div class="form-card__body--aside-description">
+        {{ client?.personal?.gender === 'male' ? 'Мужчина' : 'Женщина' }} • {{ client?.personal?.birthDate | date: 'dd.MM.yyyy' }}
+      </div>
+      <div class="form-card__body--aside-description"
+           [class.vip]="client?.personal?.clientGroup === 'VIP'"
+           [class.regular]="client?.personal?.clientGroup === 'REGULAR'"
+           [class.new]="client?.personal?.clientGroup === 'NEW'"
+      >
+        {{ client?.personal?.clientGroup === 'VIP' ? 'VIP Клиент' : client?.personal?.clientGroup === 'REGULAR'
+                                                   ? 'Постоянный Клиент' : 'Новый клиент' }}
+      </div>
+    </div>
+    <div class="form-card__body--content">
+      <div class="form-card__body--content-item">
+        <h3>Персональная информация</h3>
+        <div class="content-container">
+          <div class="content-container__item">
+            <mat-icon>location_on</mat-icon>
+            <p class="content-container__item--text">
+              {{ client.address?.country }}, {{ client.address.city }}
+            </p>
+          </div>
+          <div class="content-container__item">
+            <mat-icon>home</mat-icon>
+            <p class="content-container__item--text">
+              {{ client.address?.zipCode }}, {{ client.address.street }}, {{ client.address?.building }}
+            </p>
+          </div>
+          <div class="content-container__item">
+            <mat-icon>phone</mat-icon>
+            <p class="content-container__item--text">
+              +3{{ client.personal?.phoneNumber.slice(0, 2) }} {{ client.personal?.phoneNumber.slice(2) | mask: '00 000 00 00'}}
+            </p>
+          </div>
+          <div class="content-container__item">
+            <mat-icon>supervisor_account</mat-icon>
+            <p class="content-container__item--text">
+              {{ client.personal?.coordinator }}
+            </p>
+          </div>
         </div>
       </div>
-      <div class="info-box__content">
-        <div class="info-box__content-item">
-          <h3>Персональная информация</h3>
-          <div class="content-container">
-            <div class="content-container__item">
-              <mat-icon>location_on</mat-icon>
-              <p class="content-container__item--text">
-                {{ client.address?.country }}, {{ client.address.city }}
-              </p>
-            </div>
+
+      <div class="form-card__body--content-item">
+        <h3>Идентификационная информация</h3>
+        <div class="content-columns-container">
+          <div class="content-columns-container__item">
+            <p class="content-columns-container__item--text">
+              Документ: {{ client.identity.documentType === 'passport' ? 'Паспорт' : client.identity.documentType === 'birthСertificate'
+                                                                       ? 'Свидетельство о рождении' : 'Водительские права' }}
+            </p>
+            <p class="content-columns-container__item--text">
+             Серия и номер документа: {{ client.identity?.documentSeries }} {{ client.identity.documentNumber }}
+            </p>
+            <p class="content-columns-container__item--text">
+              Выдан: {{ client.identity?.documentIssuingAuthority }} от {{ client.identity.documentIssueDate | date: 'dd.MM.yyyy' }}
+            </p>
+          </div>
+          <div *ngIf="documentFile" class="content-columns-container__item image-container">
+            <img class="container-image" [src]="documentSrc" alt="Изображение документа">
           </div>
         </div>
       </div>
