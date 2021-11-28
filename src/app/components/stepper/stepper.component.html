@@ -1,20 +1,29 @@
 <div class="wizard-wrapper">
   <ul class="steps">
-    <li class="steps__layout steps__layout">
+    <li class="steps__layout"
+        [class.hidden-step]="stepperActive !== 'info'"
+        [class.visible-step]="stepperActive === 'info'"
+    >
       <p class="steps__layout-content" [class.active]="stepperActive === 'info' || stepperInfoDone" *ngIf="!stepperInfoDone; else stepProcessed">1</p>
       <p class="steps__layout-description">Данные клиента</p>
     </li>
 
     <div class="steps-route"></div>
 
-    <li class="steps__layout">
+    <li class="steps__layout"
+        [class.hidden-step]="stepperActive !== 'address'"
+        [class.visible-step]="stepperActive === 'address'"
+    >
       <p class="steps__layout-content" [class.active]="stepperActive === 'address' || stepperAddressDone" *ngIf="!stepperAddressDone; else stepProcessed">2</p>
       <p class="steps__layout-description">Адрес клиента</p>
     </li>
 
     <div class="steps-route"></div>
 
-    <li class="steps__layout">
+    <li class="steps__layout"
+        [class.hidden-step]="stepperActive !== 'identity'"
+        [class.visible-step]="stepperActive === 'identity'"
+    >
       <p class="steps__layout-content" [class.active]="stepperActive === 'identity'">3</p>
       <p class="steps__layout-description">Идентификация клиента</p>
     </li>

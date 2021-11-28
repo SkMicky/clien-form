@@ -49,3 +49,27 @@
     }
   }
 }
+
+@media screen and (max-width: 1055px) {
+  .steps-route {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+
+  .hidden-step {
+    display: none !important;
+  }
+
+  .visible-step {
+    flex-direction: row !important;
+
+    margin: 0 auto;
+
+    & > .steps__layout-description {
+      margin-bottom: 7px;
+      margin-left: 10px;
+    }
+  }
+}

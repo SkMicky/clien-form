@@ -78,6 +78,10 @@ app-client-identity
 
   &__body {
     padding: 10px 16px 0 20px;
+
+    & > h3 {
+      margin-left: 16px;
+    }
   }
 
   &__form {
@@ -116,6 +120,7 @@ app-client-identity
   display: flex !important;
   //justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 
   margin: 0 !important;
   padding: 12px 15px;
@@ -138,4 +143,37 @@ app-client-identity
   background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
   border: 1px solid #66add6;
   box-shadow: 0 1px 2px rgb(0 0 0 / 30%), inset 0 1px 0 rgb(255 255 255 / 50%);
+}
+
+@media screen and (max-width: 1120px) {
+  .mff-85 {
+    width: 75%;
+  }
+
+  .mff-15 {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 545px) {
+  app-client-info,
+  app-client-address,
+  app-client-identity
+  {
+    width: 70%;
+  }
+
+  .button-next {
+    margin-top: 10px;
+
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .form-card {
+    &__body {
+      padding: 10px 10px 0 10px;
+    }
+  }
 }

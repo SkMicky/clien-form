@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {UtilsService} from '../../services/utils.service';
-import {IClient} from '../../shared/models/client.model';
 import {DomSanitizer} from '@angular/platform-browser';
-import {generateRandomColor} from '../../shared/helpers/random-color-generator';
+
+import {Subscription} from 'rxjs';
+
+import {UtilsService} from '../../services/utils.service';
 
 @Component({
   selector: 'app-client-created',

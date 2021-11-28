@@ -21,3 +21,60 @@
     }
   }
 }
+
+@media screen and (max-width: 1180px) {
+  .radio-group {
+
+    &__radio {
+      display: flex;
+      flex-direction: column;
+
+      & > mat-radio-button:last-child {
+        margin-top: 5px;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 965px) {
+
+  .form-space__layout {
+     flex-wrap: wrap;
+
+     & > * {
+       width: 100%;
+     }
+   }
+
+  .radio-group {
+    padding-left: 0;
+
+    &__radio {
+      flex-direction: row;
+
+      & > mat-radio-button:last-child {
+        margin-top: 0;
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .mff-streamline {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .radio-group {
+
+    &__radio {
+      flex-direction: column;
+
+      & > mat-radio-button:last-child {
+        margin-top: 5px;
+        margin-left: 0;
+      }
+    }
+  }
+}
