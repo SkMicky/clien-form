@@ -4,6 +4,7 @@ import {ClientInfoComponent} from './pages/client-info/client-info.component';
 import {ClientAddressComponent} from './pages/client-address/client-address.component';
 import {ClientIdentityComponent} from './pages/client-identity/client-identity.component';
 import {ClientCreatedComponent} from './pages/client-created/client-created.component';
+import {ClientGuard} from './shared/guards/client.guard';
 
 export const routes: Routes = [
   {
@@ -12,18 +13,19 @@ export const routes: Routes = [
         path: '', redirectTo: 'client', pathMatch: 'full'
       },
       {
-        path: 'client', component: ClientInfoComponent
+        path: 'client', component: ClientInfoComponent, canActivate: [ClientGuard]
       },
       {
-        path: 'address', component: ClientAddressComponent
+        path: 'address', component: ClientAddressComponent, canActivate: [ClientGuard]
+
       },
       {
-        path: 'identity', component: ClientIdentityComponent
+        path: 'identity', component: ClientIdentityComponent, canActivate: [ClientGuard]
       }
     ],
   },
   {
-    path: 'client-created', component: ClientCreatedComponent
+    path: 'client-created', component: ClientCreatedComponent, canActivate: [ClientGuard]
   },
   {
     path: '**', redirectTo: '/client-form/client'

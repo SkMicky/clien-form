@@ -49,7 +49,7 @@ export class ClientIdentityComponent implements OnInit {
     }
 
     localStorage.setItem('clientIdentity', JSON.stringify(this.form.value));
-    this.utilsService.clientDocumentFile = this.file ? this.file : null;
+    this.utilsService.clientDocumentFile.next(this.file ? this.file : null);
     this._toastrService.success('Клиент успешно создан');
     this._router.navigate(['client-created']);
   }

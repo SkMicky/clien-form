@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
@@ -29,20 +29,21 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ClientIdentityComponent,
     ClientCreatedComponent
   ],
-  imports: [
-    CommonModule,
-    ComponentsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatIconModule,
-    MatInputModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatRadioModule,
-    MatMomentDateModule,
-    NgxMaskModule.forRoot(),
-    MatCheckboxModule,
-  ],
+    imports: [
+        CommonModule,
+        ComponentsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatIconModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatRadioModule,
+        MatMomentDateModule,
+        NgxMaskModule.forRoot(),
+        MatCheckboxModule,
+        FormsModule,
+    ],
 })
 export class PagesModule { }

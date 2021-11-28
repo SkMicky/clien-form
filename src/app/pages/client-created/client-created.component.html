@@ -1,1 +1,35 @@
-
+<mat-card class="form-card">
+  <mat-card-content class="form-card__body">
+    <div class="info-box">
+      <div class="info-box__header">
+        <div class="info-box__header-image">
+          {{ client?.personal?.lastName.slice(0, 1)}}.{{ client?.personal?.firstName.slice(0, 1) }}
+        </div>
+        <div class="info-box__header-description">
+          {{ client?.personal?.gender === 'male' ? 'Мужчина' : 'Женщина' }} • {{ client?.personal?.birthDate | date: 'dd.MM.yyyy' }}
+        </div>
+        <div class="info-box__header-description"
+             [class.vip]="client?.personal?.clientGroup === 'VIP'"
+             [class.regular]="client?.personal?.clientGroup === 'REGULAR'"
+             [class.new]="client?.personal?.clientGroup === 'NEW'"
+        >
+          {{ client?.personal?.clientGroup === 'VIP' ? 'VIP Клиент' : client?.personal?.clientGroup === 'REGULAR'
+                                                     ? 'Постоянный Клиент' : 'Новый клиент' }}
+        </div>
+      </div>
+      <div class="info-box__content">
+        <div class="info-box__content-item">
+          <h3>Персональная информация</h3>
+          <div class="content-container">
+            <div class="content-container__item">
+              <mat-icon>location_on</mat-icon>
+              <p class="content-container__item--text">
+                {{ client.address?.country }}, {{ client.address.city }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -12,9 +12,9 @@
       <div class="form__layout">
         <mat-form-field appearance="outline" class="mff-100">
           <mat-label>Страна проживания</mat-label>
-          <mat-select formControlName="country" required>
+          <mat-select [ngModel]="selectedCountry" (ngModelChange)="onCountryChange($event)" [ngModelOptions]="{standalone: true}" required>
             <mat-option [value]="null">Выберите страну</mat-option>
-            <mat-option *ngFor="let country of countriesList" [value]="country.isoCode">
+            <mat-option *ngFor="let country of countriesList" (onSelectionChange)="onCountryChange($event)" [value]="country.isoCode">
               {{ country.name }}
             </mat-option>
           </mat-select>
@@ -42,7 +42,7 @@
           <mat-label>Город проживания</mat-label>
           <mat-select formControlName="city" required>
             <mat-option [value]="null">Выберите город</mat-option>
-            <mat-option *ngFor="let city of citiesList" [value]="city.stateCode">
+            <mat-option *ngFor="let city of citiesList" [value]="city.name">
               {{ city.name }}
             </mat-option>
           </mat-select>

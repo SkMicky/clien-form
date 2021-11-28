@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Country, City } from 'country-state-city';
 import {ICity, ICountry} from 'country-state-city/dist/lib/interface';
 import {ToastrService} from 'ngx-toastr';
+import {MatOptionSelectionChange} from '@angular/material/core';
 
 @Component({
   selector: 'app-client-address',
@@ -16,6 +17,8 @@ export class ClientAddressComponent implements OnInit {
   form: FormGroup;
   countriesList: ICountry[];
   citiesList: ICity[];
+
+  selectedCountry: string;
 
   constructor(private _router: Router, private _fb: FormBuilder, private _toastrService: ToastrService) { }
 
@@ -37,8 +40,15 @@ export class ClientAddressComponent implements OnInit {
     }
 
     this.form.controls.country.valueChanges.subscribe(data => {
+      // console.log(data);
       this.citiesList = City.getCitiesOfCountry(data);
     });
+  }
+
+  onCountryChange(event: any): void {
+    const countryName = Country.getCountryByCode(event);
+    this.form.controls.country.setValue(countryName?.name);
+    this.citiesList = City.getCitiesOfCountry(event);
   }
 
   goPrevious(): void {
